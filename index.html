@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MrSanti | Centro de Streaming</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Urbanist:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/icono.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-tema="oscuro">
+
+    <header class="encabezado">
+        <div class="contenedor">
+            <nav class="barra-navegacion">
+                <a href="#" class="logo">
+                    <div class="logo-principal">MrSanti</div>
+                    <div class="logo-subtitulo">STREAMING HUB</div>
+                </a>
+                
+                <div class="contenedor-busqueda-header">
+                    <i class="fas fa-search icono-busqueda"></i>
+                    <input type="search" id="input-busqueda" placeholder="Buscar productos o combos..." autocomplete="off">
+                </div>
+
+                <div class="controles-navegacion">
+                    <ul class="menu-navegacion">
+                        <li class="item-navegacion"><a href="#productos" class="enlace-navegacion">Productos</a></li>
+                        <li class="item-navegacion"><a href="#combos" class="enlace-navegacion">Combos</a></li>
+                    </ul>
+                    <button id="interruptor-tema" class="btn-icono" aria-label="Cambiar tema">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                    <button id="boton-carrito" class="btn-icono" aria-label="Abrir carrito">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="contador-carrito" class="contador-carrito">0</span>
+                    </button>
+                    <button id="boton-acceso" class="btn btn-gradiente">Acceso Revendedor</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="video-fondo">
+                <video autoplay loop muted playsinline src="https://assets.mixkit.co/videos/preview/mixkit-futuristic-plexus-network-connections-34300-large.mp4"></video>
+            </div>
+            <div class="hero-contenido contenedor">
+                <h1>El Universo del Streaming a tu Alcance</h1>
+                <p class="subtitulo">Descubre, combina y disfruta tus plataformas favoritas con una experiencia única.</p>
+            </div>
+        </section>
+
+        <section id="productos" class="seccion">
+            <div class="contenedor revelar">
+                <h2 class="titulo-seccion">Servicios Individuales</h2>
+                
+                <div class="caja-borde-animado">
+                    <div class="aviso-disponibilidad">
+                        <i class="fas fa-info-circle"></i>
+                        La disponibilidad y precios pueden variar. Consulta el stock actual.
+                    </div>
+                </div>
+
+                <div id="cuadricula-productos" class="cuadricula-productos">
+                    </div>
+            </div>
+        </section>
+
+        <section id="combos" class="seccion fondo-oscuro">
+            <div class="contenedor revelar">
+                <h2 class="titulo-seccion">Combos Inteligentes</h2>
+                <div id="cuadricula-combos" class="cuadricula-productos">
+                    </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="pie-pagina">
+        <div class="contenedor footer-contenido">
+            <div class="footer-copyright">
+                <p>&copy; 2025 MrSanti Streaming. Todos los derechos reservados.</p>
+            </div>
+            <div class="footer-social">
+                <a href="https://facebook.com/tu-usuario" target="_blank" aria-label="Facebook" class="social-link">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://instagram.com/tu-usuario" target="_blank" aria-label="Instagram" class="social-link">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://tiktok.com/@tu-usuario" target="_blank" aria-label="TikTok" class="social-link">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://wa.me/573023999133" target="_blank" aria-label="WhatsApp" class="social-link">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="modal-acceso" class="modal">
+        <div class="modal-contenido">
+            <button class="btn-cerrar" data-cierra-modal="modal-acceso">&times;</button>
+            <h3>Portal de Revendedores</h3>
+            <form id="formulario-acceso">
+                <div class="grupo-formulario">
+                    <label for="usuario">Usuario de Revendedor</label>
+                    <input type="text" id="usuario" placeholder="Ej: Admin123" required>
+                </div>
+                <div class="grupo-formulario">
+                    <label for="contrasena">Contraseña</label>
+                    <input type="password" id="contrasena" placeholder="••••••••••" required>
+                </div>
+                <p id="error-acceso" class="mensaje-error"></p>
+                <button type="submit" class="btn btn-gradiente btn-bloque">Ver Precios de Revendedor</button>
+            </form>
+        </div>
+    </div>
+    
+    <div id="modal-carrito" class="modal">
+        <div class="modal-contenido">
+            <button class="btn-cerrar" data-cierra-modal="modal-carrito">&times;</button>
+            <h3>Tu Carrito</h3>
+            <div id="items-carrito" class="items-carrito"></div>
+            <div class="pie-carrito">
+                <div class="total-carrito">
+                    <span>Total:</span>
+                    <span id="total-carrito-valor">$0</span>
+                </div>
+                <button id="btn-finalizar-compra" class="btn btn-gradiente btn-bloque">
+                    <i class="fab fa-whatsapp"></i> Enviar Pedido por WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

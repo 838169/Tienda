@@ -1,0 +1,1041 @@
+/* ==========================================================================
+   1. VARIABLES DE DISEÑO Y TEMAS
+   ========================================================================== */
+
+:root {
+    --color-fondo: #121212;
+    --color-fondo-oscuro: #0D0D0D;
+    --color-superficie: #1E1E1E;
+    --color-superficie-tarjeta: #1E1E1E;
+    --color-texto-principal: #EAEAEA;
+    --color-texto-secundario: #9E9E9E;
+    --color-borde: #333333;
+    --color-sombra: rgba(0, 124, 240, 0.2);
+    --color-agotado: #E50914;
+    --fuente-titulos: 'Urbanist', sans-serif;
+    --fuente-cuerpo: 'Poppins', sans-serif;
+    --gradiente-primario: linear-gradient(90deg, #007cf0, #00dfd8);
+    --gradiente-logo-rgb: linear-gradient(50deg, #09e5a7, #007cf0);
+    --gradiente-arcoiris: conic-gradient(from 90deg at 50% 50%, #E50914, #1DB954, #007cf0, #FBC902, #E50914);
+    --color-brand-facebook: #1877F2;
+    --color-brand-instagram: #E4405F;
+    --color-brand-whatsapp: #25D366;
+    --gradiente-brand-tiktok: linear-gradient(45deg, #25F4EE, #FE2C55);
+    --color-netflix: #E50914;
+    --color-disney: #113CCF;
+    --color-spotify: #1DB954;
+    --color-max: #8A2BE2;
+    --color-prime: #00A3E0;
+    --color-paramount: #0064C3;
+    --color-vix: #FBC902;
+    --color-deezer: #A444F5;
+    --color-gemini: #4285F4;
+    --color-canva: #00d9ff;
+    --color-crunchyroll: #F47521;
+    --color-combo: #00dfd8;
+    --color-hulu: #1CE783;
+    --color-iptv: #6A0DAD;
+    --color-profe-net: #B22222;
+    --color-apple-tv: #A3A3A8;
+    --radio-borde: 12px;
+}
+
+body[data-tema='claro'] {
+    --color-fondo: #F4F4F9;
+    --color-fondo-oscuro: #FFFFFF;
+    --color-superficie: #FFFFFF;
+    --color-texto-principal: #121212;
+    --color-texto-secundario: #555555;
+    --color-borde: #E0E0E0;
+    --color-sombra: rgba(0, 124, 240, 0.1);
+}
+
+body[data-tema='claro'] .hero::after {
+    background: rgba(244, 244, 249, 0.6);
+}
+
+body[data-tema='claro'] .video-fondo {
+    filter: brightness(1.2);
+}
+
+body[data-tema='claro'] #input-busqueda {
+    background-color: #e9e9f0;
+}
+
+body[data-tema='claro'] .aviso-disponibilidad {
+    background-color: var(--color-superficie);
+}
+
+body[data-tema='claro'] .tarjeta-producto--apple-tv {
+    background-color: #FFFFFF;
+    border-color: #d1d1d6;
+}
+
+body[data-tema='claro'] .tarjeta-producto--apple-tv .nombre-servicio,
+body[data-tema='claro'] .tarjeta-producto--apple-tv .lista-caracteristicas li {
+    color: #1d1d1f;
+}
+
+body[data-tema='claro'] .tarjeta-producto.agotado::after {
+    color: #333;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+/* ==========================================================================
+   2. ESTILOS BASE Y GENERALES
+   ========================================================================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--fuente-cuerpo);
+    background-color: var(--color-fondo);
+    color: var(--color-texto-principal);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--fuente-titulos);
+    font-weight: 900;
+    color: var(--color-texto-principal);
+    transition: color 0.3s ease;
+}
+
+.centrar-texto {
+    text-align: center;
+}
+
+/* ==========================================================================
+   3. ENCABEZADO Y NAVEGACIÓN
+   ========================================================================== */
+
+.encabezado {
+    background-color: color-mix(in srgb, var(--color-fondo) 80%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-borde);
+    padding: 0.8rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px 5px rgba(0, 0, 0, 0.15);
+}
+
+.barra-navegacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.logo {
+    text-decoration: none;
+    text-align: left;
+    flex-shrink: 0;
+}
+
+.logo-principal {
+    font-family: var(--fuente-titulos);
+    font-size: 1.9rem;
+    font-weight: 900;
+    line-height: 1;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: var(--gradiente-primario);
+}
+
+.logo-subtitulo {
+    font-family: var(--fuente-cuerpo);
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: var(--color-texto-secundario);
+    margin-top: -5px;
+    text-transform: uppercase;
+}
+
+.controles-navegacion {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.menu-navegacion {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 2rem;
+}
+
+.enlace-navegacion {
+    color: var(--color-texto-secundario);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.enlace-navegacion:hover {
+    color: var(--color-texto-principal);
+}
+
+.enlace-navegacion::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: var(--gradiente-primario);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.4s ease;
+}
+
+.enlace-navegacion:hover::after,
+.enlace-navegacion.activo::after {
+    transform: scaleX(1);
+}
+
+.enlace-navegacion.activo {
+    color: var(--color-texto-principal);
+}
+
+/* ==========================================================================
+   4. BUSCADOR EN LA CABECERA
+   ========================================================================== */
+
+.contenedor-busqueda-header {
+    position: relative;
+    flex-grow: 1;
+    max-width: 500px;
+}
+
+.icono-busqueda {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: var(--color-texto-secundario);
+    pointer-events: none;
+}
+
+#input-busqueda {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-borde);
+    color: var(--color-texto-principal);
+    font-size: 0.9rem;
+    font-family: var(--fuente-cuerpo);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+#input-busqueda:focus {
+    outline: none;
+    border-color: #007cf0;
+    box-shadow: 0 0 0 3px rgba(0, 124, 240, 0.2);
+}
+
+/* ==========================================================================
+   5. COMPONENTES
+   ========================================================================== */
+
+.btn {
+    padding: 0.8rem 1.8rem;
+    border: none;
+    border-radius: var(--radio-borde);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    font-family: var(--fuente-cuerpo);
+}
+
+.btn-gradiente {
+    background: var(--gradiente-primario);
+    box-shadow: 0 4px 15px var(--color-sombra);
+}
+
+.btn-gradiente:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px var(--color-sombra);
+}
+
+.btn-bloque {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-icono {
+    background: none;
+    border: 1px solid var(--color-borde);
+    color: var(--color-texto-secundario);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.btn-icono:hover {
+    color: var(--color-texto-principal);
+    border-color: var(--color-texto-principal);
+}
+
+.contador-carrito {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: var(--color-netflix);
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--color-fondo);
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.contador-carrito.actualizado {
+    transform: scale(1.2);
+}
+
+.caja-borde-animado {
+    position: relative;
+    max-width: 800px;
+    margin: -1rem auto 3rem auto;
+    padding: 2px;
+    border-radius: var(--radio-borde);
+    overflow: hidden;
+}
+
+.caja-borde-animado::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 250%;
+    height: 250%;
+    background: var(--gradiente-arcoiris);
+    animation: girar 5s linear infinite;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes girar {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.aviso-disponibilidad {
+    position: relative;
+    background-color: var(--color-superficie-tarjeta);
+    padding: 1rem;
+    border-radius: calc(var(--radio-borde) - 2px);
+    text-align: center;
+    color: var(--color-texto-secundario);
+    transition: background-color 0.3s ease;
+}
+
+.aviso-disponibilidad .fa-info-circle {
+    color: #007cf0;
+    margin-right: 0.5rem;
+}
+
+.cuadricula-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.tarjeta-producto {
+    background: var(--color-superficie-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-borde);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.tarjeta-producto:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px -5px color-mix(in srgb, var(--color-brillo, #000) 30%, transparent);
+}
+
+.tarjeta-cabecera {
+    padding: 1.5rem;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tarjeta-cuerpo {
+    padding: 0 1.5rem 1.5rem;
+}
+
+.tarjeta-pie {
+    padding: 1.5rem;
+    text-align: center;
+    background-color: color-mix(in srgb, var(--color-superficie-tarjeta) 50%, transparent);
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.icono-servicio {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.icono-servicio img {
+    max-height: 100%;
+    max-width: 150px;
+    object-fit: contain;
+}
+
+.icono-servicio .logo-redondeado {
+    border-radius: var(--radio-borde);
+}
+
+.icono-servicio i {
+    font-size: 70px;
+    color: var(--color-brillo);
+}
+
+.nombre-servicio {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 0.5rem;
+    color: #EAEAEA;
+}
+
+.lista-caracteristicas {
+    list-style: none;
+    margin: 0.5rem 0 0 0;
+    padding: 0;
+    text-align: left;
+    min-height: 90px;
+}
+
+.lista-caracteristicas li {
+    margin-bottom: 0.5rem;
+    color: #9E9E9E;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.lista-caracteristicas li .fa-check {
+    color: #00dfd8;
+    margin-top: 4px;
+}
+
+.selector-plan {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    border-radius: var(--radio-borde);
+    background-color: #333;
+    color: #EAEAEA;
+    border: 1px solid #555;
+    font-family: var(--fuente-cuerpo);
+    cursor: pointer;
+}
+
+.aclaracion-producto {
+    font-size: 0.75rem;
+    color: #9E9E9E;
+    font-style: italic;
+    margin-top: 0.75rem;
+}
+
+.ciclo-producto {
+    font-size: 0.7rem;
+    color: #9E9E9E;
+    opacity: 0.7;
+    margin-top: 1rem;
+    border-top: 1px dashed #555;
+    padding-top: 1rem;
+}
+
+.etiqueta-precio {
+    min-height: 70px;
+}
+
+.etiqueta-precio .etiqueta {
+    display: block;
+    font-size: 1rem;
+    color: #9E9E9E;
+}
+
+.etiqueta-precio .valor {
+    font-size: 2.2rem;
+    font-weight: 900;
+    background: var(--gradiente-primario);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: var(--fuente-titulos);
+    line-height: 1.1;
+}
+
+.etiqueta-precio .precio-anterior {
+    font-size: 1rem;
+    color: var(--color-texto-secundario);
+    text-decoration: line-through;
+    display: block;
+    opacity: 0.7;
+}
+
+.tarjeta-combo-contenido {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 1rem;
+    text-align: left;
+    align-items: center;
+    height: 100%;
+}
+
+.combo-logos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.combo-logos img {
+    max-height: 35px;
+    object-fit: contain;
+}
+
+.combo-logos .fa-plus {
+    font-size: 1rem;
+    color: var(--color-texto-secundario);
+}
+
+.combo-caracteristicas {
+    border-left: 1px solid #333333;
+    padding-left: 1rem;
+}
+
+.combo-nombre {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #EAEAEA;
+}
+
+.combo-regalo {
+    font-size: 0.85rem;
+    color: var(--color-combo);
+    font-weight: 700;
+}
+
+.btn-agregar {
+    background: var(--gradiente-primario);
+    color: white;
+    font-weight: 700;
+    padding: 0.75rem;
+    border-radius: var(--radio-borde);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    width: 100%;
+}
+
+.btn-agregar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px var(--color-sombra);
+}
+
+.btn-agregar:disabled {
+    background: #555;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.tarjeta-producto.agotado {
+    border: 2px solid var(--color-agotado);
+    opacity: 0.6;
+}
+
+.tarjeta-producto.agotado:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.tarjeta-producto.agotado::after {
+    content: 'AGOTADO';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--fuente-titulos);
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--color-agotado);
+    text-shadow: 0 0 8px var(--color-fondo);
+    z-index: 5;
+    background: rgba(18, 18, 18, 0.2);
+}
+
+.tarjeta-producto--netflix { --color-brillo: var(--color-netflix); }
+.tarjeta-producto--netflix .icono-servicio { height: 100px; }
+.tarjeta-producto--disney { --color-brillo: var(--color-disney); }
+.tarjeta-producto--spotify { --color-brillo: var(--color-spotify); }
+.tarjeta-producto--max { --color-brillo: var(--color-max); }
+.tarjeta-producto--prime { --color-brillo: var(--color-prime); }
+.tarjeta-producto--paramount { --color-brillo: var(--color-paramount); }
+.tarjeta-producto--canva { --color-brillo: var(--color-canva); }
+.tarjeta-producto--vix { --color-brillo: var(--color-vix); }
+.tarjeta-producto--deezer { --color-brillo: var(--color-deezer); }
+.tarjeta-producto--gemini { --color-brillo: var(--color-gemini); }
+.tarjeta-producto--crunchyroll { --color-brillo: var(--color-crunchyroll); }
+.tarjeta-producto--combo { --color-brillo: var(--color-combo); }
+.tarjeta-producto--hulu { --color-brillo: var(--color-hulu); }
+.tarjeta-producto--iptv { --color-brillo: var(--color-iptv); }
+.tarjeta-producto--profe-net { --color-brillo: var(--color-profe-net); }
+.tarjeta-producto--apple-tv {
+    --color-brillo: var(--color-apple-tv);
+    background-color: #222;
+}
+
+.tarjeta-producto--apple-tv .icono-servicio {
+    filter: invert(1);
+}
+
+.sin-resultados {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--color-texto-secundario);
+    font-size: 1.1rem;
+    padding: 2rem;
+}
+
+/* ==========================================================================
+   6. SECCIONES Y FOOTER
+   ========================================================================== */
+
+.hero {
+    position: relative;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.video-fondo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    transition: filter 0.3s ease;
+}
+
+.video-fondo video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(18, 18, 18, 0.6);
+    z-index: -1;
+    transition: background-color 0.3s ease;
+}
+
+.hero-contenido h1 {
+    font-size: clamp(3rem, 6vw, 5rem);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    line-height: 1.2;
+    margin: 0;
+    color: var(--color-texto-principal);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-contenido h1::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: translateX(-100%);
+    animation: animacion-brillo 4s ease-in-out infinite;
+    animation-delay: 2s;
+}
+
+@keyframes animacion-brillo {
+    to {
+        transform: translateX(100%);
+    }
+}
+
+.hero-contenido .subtitulo {
+    font-size: 1.1rem;
+    color: var(--color-texto-secundario);
+    max-width: 600px;
+    margin: 0.5rem auto 0;
+    font-family: var(--fuente-cuerpo);
+}
+
+.seccion {
+    padding: 5rem 0;
+}
+
+.fondo-oscuro {
+    background-color: var(--color-fondo-oscuro);
+    transition: background-color 0.3s ease;
+}
+
+.titulo-seccion {
+    font-size: 2.8rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.revelar {
+    position: relative;
+    transform: translateY(50px);
+    opacity: 0;
+    transition: transform 1s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 1s cubic-bezier(0.6, 0.2, 0.1, 1);
+}
+
+.revelar.activo {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.pie-pagina {
+    background-color: var(--color-fondo-oscuro);
+    padding: 2.5rem 0;
+    margin-top: 4rem;
+    border-top: 1px solid var(--color-borde);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.footer-contenido {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer-copyright p {
+    margin: 0;
+    color: var(--color-texto-secundario);
+    font-size: 0.9rem;
+}
+
+.footer-social {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-link {
+    color: var(--color-texto-secundario);
+    font-size: 1.2rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-link:hover {
+    transform: translateY(-3px);
+}
+
+.social-link[aria-label="Facebook"]:hover {
+    color: var(--color-brand-facebook);
+}
+
+.social-link[aria-label="Instagram"]:hover {
+    color: var(--color-brand-instagram);
+}
+
+.social-link[aria-label="WhatsApp"]:hover {
+    color: var(--color-brand-whatsapp);
+}
+
+.social-link[aria-label="TikTok"]:hover {
+    background: var(--gradiente-brand-tiktok);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* ==========================================================================
+   7. MODALES
+   ========================================================================== */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.visible {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-contenido {
+    background: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    padding: 2.5rem;
+    border-radius: var(--radio-borde);
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    transform: scale(0.95);
+    transition: all 0.3s ease;
+}
+
+.modal.visible .modal-contenido {
+    transform: scale(1);
+}
+
+.btn-cerrar {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: var(--color-texto-secundario);
+    font-size: 2rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.modal-contenido h3 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.grupo-formulario {
+    margin-bottom: 1.5rem;
+}
+
+.grupo-formulario label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--color-texto-secundario);
+}
+
+.grupo-formulario input {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--color-fondo);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-borde);
+    color: var(--color-texto-principal);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.mensaje-error {
+    color: #ff4d4d;
+    text-align: center;
+    margin-bottom: 1rem;
+    min-height: 1.2em;
+}
+
+.items-carrito {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.item-carrito {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.item-icono img,
+.item-icono i {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: var(--radio-borde);
+}
+
+.item-info {
+    flex-grow: 1;
+}
+
+.item-info h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--color-texto-principal);
+}
+
+.item-info p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--color-texto-secundario);
+}
+
+.item-controles {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.item-controles button {
+    background: var(--color-borde);
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--color-texto-principal);
+}
+
+.item-controles .btn-eliminar {
+    background: none;
+    color: var(--color-texto-secundario);
+}
+
+.pie-carrito {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-borde);
+}
+
+.total-carrito {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   8. RESPONSIVIDAD
+   ========================================================================== */
+
+@media (max-width: 992px) {
+    .barra-navegacion {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        row-gap: 1rem;
+    }
+
+    .contenedor-busqueda-header {
+        order: 3;
+        width: 100%;
+        max-width: none;
+        flex-basis: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-navegacion {
+        display: none;
+    }
+
+    .logo-principal {
+        font-size: 1.5rem;
+    }
+
+    .titulo-seccion {
+        font-size: 2.2rem;
+    }
+
+    .footer-contenido {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .tarjeta-combo-contenido {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .combo-caracteristicas {
+        border-left: none;
+        border-top: 1px solid var(--color-borde);
+        padding-left: 0;
+        padding-top: 1rem;
+        margin-top: 1rem;
+    }
+}
