@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     const combos = [
-        { id: 'combo-tv', nombre: 'Combo TV', iconos: ['/Tienda/img/Disney.png', 'https://img.icons8.com/color/48/netflix.png', '/Tienda/img/vix.webp'], claseColor: 'combo', caracteristicas: ['Disney+ Standard', 'Netflix', 'Vix'] },
+        { id: 'combo-tv', nombre: 'Combo TV', iconos: ['img/Disney.png', 'https://img.icons8.com/color/48/netflix.png', '/Tienda/img/vix.webp'], claseColor: 'combo', caracteristicas: ['Disney+ Standard', 'Netflix', 'Vix'] },
         { id: 'combo-pro', nombre: 'Combo Pro', iconos: ['/Tienda/img/Disney.png', 'https://img.icons8.com/color/48/netflix.png', '/Tienda/img/max.avif'], claseColor: 'combo', caracteristicas: ['Disney+ Standard', 'Netflix', 'Max'] },
         { id: 'combo-prime', nombre: 'Combo Prime', iconos: ['https://img.icons8.com/color/48/netflix.png', 'https://img.icons8.com/color/48/amazon-prime-video.png'], claseColor: 'combo', caracteristicas: ['Netflix', 'Prime Video'] },
         { id: 'combo-plus', nombre: 'Combo Plus', iconos: ['/Tienda/img/Paramount_Plus.svg', 'https://img.icons8.com/color/48/netflix.png', '/Tienda/img/max.avif'], claseColor: 'combo', caracteristicas: ['Paramount+', 'Netflix', 'Max'] },
